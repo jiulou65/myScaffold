@@ -8,7 +8,7 @@
 
 数据库：mysql5.7
 
-连接池：
+连接池：druid
 
 缓存：redis
 
@@ -26,3 +26,4 @@ orm框架：mybatis
 
 jdk：1.8\异常处理\文件上传下载
 
+jvm参数：
