@@ -2,8 +2,11 @@ package com.jiulou;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jiulou.config.BusinessException;
 import com.jiulou.dao.BlogDao;
+import com.jiulou.dao.UserDao;
 import com.jiulou.model.Blog;
+import com.jiulou.model.User;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,24 +20,10 @@ import java.util.List;
 
 @SpringBootApplication
 @MapperScan("com.jiulou.dao")
-@Controller
 public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-    }
-
-    @Autowired
-    private BlogDao blogDao;
-
-    @RequestMapping("/thread")
-    @ResponseBody
-    @Async("taskExecutor")
-    public String my() throws JsonProcessingException {
-        List<Blog> allBlog = blogDao.findAllBlog();
-        ObjectMapper objectMapper = new ObjectMapper();
-        String s = objectMapper.writeValueAsString(allBlog);
-        return s;
     }
 
 }
